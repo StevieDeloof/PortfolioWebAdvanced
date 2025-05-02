@@ -44,6 +44,7 @@ export const searchPokemon = async (amount = 10, search = "") => {
             i++
         } catch (err) {
             amount = 0;
+            //Checks if any pokemon were found at all. If no pokemon were found period, this message is sendt
             if (amount == start_amount) poketable.innerHTML = "No pokemon found"
         }
     }
