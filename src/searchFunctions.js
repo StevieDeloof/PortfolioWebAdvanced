@@ -5,5 +5,7 @@ export const getImage = (i) => {
     image.setAttribute("height", "100px")
     image.setAttribute("width", "100px")
     image.setAttribute("alt", "Pokemon image")
-    return image
+    const imageColumn = document.createElement("td")
+    imageColumn.appendChild(image)
+    return imageColumn
 }
