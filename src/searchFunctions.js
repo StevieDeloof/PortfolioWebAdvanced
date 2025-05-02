@@ -9,3 +9,10 @@ export const getImage = (i) => {
     imageColumn.appendChild(image)
     return imageColumn
 }
+export const filterName = (search, name) => {
+    if (search.length == 0) {
+        return true
+    }
+    if (search == name.substring(0, search.length)) return true
+    return false
+}

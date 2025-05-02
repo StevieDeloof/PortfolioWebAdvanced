@@ -11,6 +11,3 @@ table, td {
     display: flex; 
     flex-direction: row;
 }
-form {
-    width:20%   ;
-}

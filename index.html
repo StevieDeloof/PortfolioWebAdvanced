@@ -8,8 +8,10 @@
   </head>
   <body>
     <div id="container-main">
-      <div>
-        <label for="amount">Pokemon amount</label><br>
+      <div id="input">
+        <label for="pokemonName">Search by name:</label><br>
+        <input type="text" id="pokemonName"><br>
+        <label for="amount">Pokemon amount:</label><br>
         <select name="amount" id="amount">
           <option value="5">5</option>
           <option value="10">10</option>
@@ -22,6 +24,7 @@
           <option value="45">45</option>
           <option value="50">50</option>
         </select>
+        <br>
         <button id="filter">Filter</button>
       </div>
       <table id="poketable">
