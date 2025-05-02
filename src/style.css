@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+table, td {
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+#container-main {
+    display: flex; 
+    flex-direction: row;
+}
+form {
+    width:20%   ;
+}
