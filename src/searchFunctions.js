@@ -1,4 +1,5 @@
-export const getImage = (i) => {
+//2 subFunctions of searchPokemon
+ const getImage = (i) => {
     //code borrowed from https://stackoverflow.com/questions/7802744/adding-an-img-element-to-a-div-with-javascript
     const image = document.createElement('img');
     image.setAttribute("src", `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`)
@@ -9,10 +10,34 @@ export const getImage = (i) => {
     imageColumn.appendChild(image)
     return imageColumn
 }
-export const filterName = (search, name) => {
+ const filterName = (search, name) => {
     if (search.length == 0) {
         return true
     }
     if (search == name.substring(0, search.length)) return true
     return false
+}
+
+export const searchPokemon = async (amount = 10, search = "") => {
+    poketable.innerHTML = ""
+    let i = 1;
+    while (amount > 0) {
+        //search Pokemon based on ID
+        const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`).then(data => data.json())
+        const name = pokemon.forms[0].name
+         
+        if (filterName(search, name)) {
+            const newPokemon = document.createElement("tr")
+            const data = document.createElement("td")
+
+            const image = getImage(i)
+            newPokemon.appendChild(image)
+
+            data.innerHTML = name
+            newPokemon.appendChild(data);
+            poketable.appendChild(newPokemon)
+            amount--;
+        }
+        i++
+    }
 }
