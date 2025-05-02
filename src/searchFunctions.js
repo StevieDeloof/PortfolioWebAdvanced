@@ -18,6 +18,8 @@
     return false
 }
 
+const poketable = document.querySelector("tbody")
+
 export const searchPokemon = async (amount = 10, search = "") => {
     const start_amount = amount;
     poketable.innerHTML = ""

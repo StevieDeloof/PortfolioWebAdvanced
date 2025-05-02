@@ -1,11 +1,9 @@
 'use strict'
 import { searchPokemon } from "./searchFunctions.js"
-const filter = document.getElementById('filter');
 
-const poketable = document.getElementById("poketable")
+const filter = document.getElementById('filter');
 const amountEl = document.getElementById("amount")
 const pokemonName = document.getElementById("pokemonName")
-
 
 document.addEventListener('load', searchPokemon())
 
