@@ -31,16 +31,27 @@ export const searchPokemon = async (amount = 10, search = "") => {
             .then(data => data.json())
             if (filterName(search, pokemon.forms[0].name)) {
                 const name = pokemon.forms[0].name
-                console.log(i)
                 const newPokemon = document.createElement("tr")
-                const data = document.createElement("td")
-    
+                let data = document.createElement("td")
+                data.innerHTML = i
+                newPokemon.appendChild(data);
+                poketable.appendChild(newPokemon)
+
                 const image = getImage(i)
                 newPokemon.appendChild(image)
-    
+
+                data = document.createElement("td")
                 data.innerHTML = name
                 newPokemon.appendChild(data);
                 poketable.appendChild(newPokemon)
+
+                data = document.createElement("td")
+                const btn = document.createElement('button')
+                btn.innerHTML = "Favorite"
+                btn.className = "btn-favorite"
+                data.append(btn)
+                newPokemon.appendChild(data)
+
                 amount--;
             }
             i++

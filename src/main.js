@@ -1,4 +1,5 @@
 'use strict'
+
 import { searchPokemon } from "./searchFunctions.js"
 
 const filter = document.getElementById('filter');
