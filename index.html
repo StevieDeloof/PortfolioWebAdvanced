@@ -8,6 +8,10 @@
   </head>
   <body>
     <div id="container-main">
+      <div id="favorites">
+        No favorites yet
+      </div>
+
       <div id="input">
         <label for="pokemonName">Search by name:</label><br>
         <input type="text" id="pokemonName"><br>
@@ -28,15 +32,14 @@
         <button id="filter">Filter</button>
       </div>
 
-
-      <table id="poketable">
+      <table>
       	<thead>
-          <th>Number</th>
+          <th>ID</th>
           <th>Pokemon</th>
           <th>Name</th>
           <th>Favorite</th>
         </thead>
-        <tbody>
+        <tbody id="poketable">
         </tbody>
       </table>
     </div>

@@ -2,17 +2,26 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 table, td {
+    background-color: lightblue;
     text-align: center;
-    border: 1px solid black;
+    border: 2px solid black;
     border-collapse: collapse;
+}
+
+table {
+    margin-right: 10px;
 }
 
 #container-main {
     display: flex; 
     flex-direction: row;
 }
+
+
+
 .btn-favorite {
     height: 85px;
     width: 85px;
     border-radius: 25%;
+    background-color: rgb(77, 187, 224);
 }

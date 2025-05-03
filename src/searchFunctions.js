@@ -1,24 +1,10 @@
-//2 subFunctions of searchPokemon
- const getImage = (i) => {
-    //code borrowed from https://stackoverflow.com/questions/7802744/adding-an-img-element-to-a-div-with-javascript
-    const image = document.createElement('img');
-    image.setAttribute("src", `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`)
-    image.setAttribute("height", "100px")
-    image.setAttribute("width", "100px")
-    image.setAttribute("alt", "Pokemon image")
-    const imageColumn = document.createElement("td")
-    imageColumn.appendChild(image)
-    return imageColumn
-}
- const filterName = (search, name) => {
-    if (search.length == 0) {
-        return true
-    }
-    if (search == name.substring(0, search.length)) return true
-    return false
-}
+import {getImage, filterName} from "./lookups"
 
-const poketable = document.querySelector("tbody")
+const poketable = document.getElementById('poketable')
+
+//function import from storageLogic
+import {favorites, favoritesHTML, initializeStorage, refreshFavorites, addToFavorites} from "./storageLogic"
+
 
 export const searchPokemon = async (amount = 10, search = "") => {
     const start_amount = amount;
@@ -30,6 +16,8 @@ export const searchPokemon = async (amount = 10, search = "") => {
             const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
             .then(data => data.json())
             if (filterName(search, pokemon.forms[0].name)) {
+                //Set vars 
+                const id = i;
                 const name = pokemon.forms[0].name
                 const newPokemon = document.createElement("tr")
                 let data = document.createElement("td")
@@ -37,7 +25,7 @@ export const searchPokemon = async (amount = 10, search = "") => {
                 newPokemon.appendChild(data);
                 poketable.appendChild(newPokemon)
 
-                const image = getImage(i)
+                const image = getImage(id)
                 newPokemon.appendChild(image)
 
                 data = document.createElement("td")
@@ -45,10 +33,20 @@ export const searchPokemon = async (amount = 10, search = "") => {
                 newPokemon.appendChild(data);
                 poketable.appendChild(newPokemon)
 
+                //Button to save a pokemon
                 data = document.createElement("td")
                 const btn = document.createElement('button')
                 btn.innerHTML = "Favorite"
                 btn.className = "btn-favorite"
+                btn.addEventListener('click', () => {
+                    for (let favorite of favorites) {
+                        if (favorite.ID == id) {
+                            alert("Pokemon already a favorite")
+                            return 0;
+                        }
+                    }
+                    addToFavorites(id, name)
+                })
                 data.append(btn)
                 newPokemon.appendChild(data)
 
