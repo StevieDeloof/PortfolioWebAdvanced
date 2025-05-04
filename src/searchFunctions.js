@@ -3,7 +3,7 @@ import {getImage, filterName} from "./lookups"
 const poketable = document.getElementById('poketable')
 
 //function import from storageLogic
-import {favorites, favoritesHTML, initializeStorage, refreshFavorites, addToFavorites, saveFavorites} from "./storageLogic"
+import {favorites, addToFavorites, saveFavorites} from "./storageLogic"
 
 
 export const searchPokemon = async (amount = 10, search = "") => {
@@ -13,8 +13,10 @@ export const searchPokemon = async (amount = 10, search = "") => {
     while (amount > 0) {
         //search Pokemon based on ID
         try {
+            //Get the pokemon, and turn it into an object
             const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
             .then(data => data.json())
+            //If the name is accepted by the filter
             if (filterName(search, pokemon.forms[0].name)) {
                 //Set vars 
                 const id = i;
@@ -25,9 +27,11 @@ export const searchPokemon = async (amount = 10, search = "") => {
                 newPokemon.appendChild(data);
                 poketable.appendChild(newPokemon)
 
+                //add image
                 const image = getImage(id)
                 newPokemon.appendChild(image)
 
+                //add name
                 data = document.createElement("td")
                 data.innerHTML = name
                 newPokemon.appendChild(data);
@@ -38,6 +42,8 @@ export const searchPokemon = async (amount = 10, search = "") => {
                 const btn = document.createElement('button')
                 btn.innerHTML = "Favorite"
                 btn.className = "btn-favorite"
+
+                //eventlistener
                 btn.addEventListener('click', () => {
                     for (let favorite of favorites) {
                         if (favorite.ID == id) {
@@ -48,11 +54,13 @@ export const searchPokemon = async (amount = 10, search = "") => {
                     addToFavorites(id, name)
                     saveFavorites(favorites)
                 })
+
                 data.append(btn)
                 newPokemon.appendChild(data)
-
+                //lower amount of pokemon to be added
                 amount--;
             }
+            //Raise ID of the pokemon
             i++
         } catch (err) {
             amount = 0;
