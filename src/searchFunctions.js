@@ -52,7 +52,7 @@ export const searchPokemon = async (amount = 10, search = "") => {
                         }
                     }
                     addToFavorites(id, name)
-                    saveFavorites(favorites)
+                    saveFavorites()
                 })
 
                 data.append(btn)

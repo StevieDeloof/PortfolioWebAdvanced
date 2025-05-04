@@ -23,9 +23,29 @@ export const refreshFavorites = () => {
             row.append(image)
             row.innerHTML += `<td>${favorite.name}</td>`
 
+            //Add button to remove from favorites
+            const remove = document.createElement("button")
+            remove.innerHTML = "Remove from favorites"
+            remove.classList = "btn-favorite remove";
+
+            //add button code to remove
+            remove.addEventListener("click", () => {
+                //get index of favorite, then remove
+                const index = favorites.indexOf(favorite)
+                favorites.splice(index, 1)
+                saveFavorites()
+                refreshFavorites()
+            })
+            const buttonColumn = document.createElement("td")
+            buttonColumn.appendChild(remove);
+            row.appendChild(buttonColumn)
+
             table.appendChild(row)
         }
         favoritesHTML.appendChild(table)
+    }
+    else {
+        favoritesHTML.innerHTML = "No favorites yet"
     }
 }
 
@@ -42,8 +62,7 @@ export const addToFavorites = (id, name) => {
     else (alert("You already have 10 favorites! Remove one before you add another one"))
 }
 
-export const saveFavorites = (favorites) => {
-    console.log(localStorage.getItem("favorites"))    
+export const saveFavorites = () => {
     //If no favorites are saved, don't save anything
     if (favorites.length == 0) {
         //If there were favorites, but were removed, remove Item from LocalStorage
