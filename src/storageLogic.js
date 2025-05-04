@@ -7,7 +7,7 @@ export const initializeStorage = () => {
     }
 }
 
-import { getImage } from "./lookups";
+import { getImage } from "./lookups.js";
 
 export const refreshFavorites = () => {
     if (favorites.length != 0) {

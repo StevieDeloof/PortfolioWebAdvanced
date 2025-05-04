@@ -8,10 +8,6 @@
   </head>
   <body>
     <div id="container-main">
-      <div id="favorites">
-        No favorites yet
-      </div>
-
       <div id="input">
         <label for="pokemonName">Search by name:</label><br>
         <input type="text" id="pokemonName"><br>
@@ -30,6 +26,7 @@
         </select>
         <br>
         <button id="filter">Filter</button>
+        <div id="res" style="display: none;">Searching</div>
       </div>
 
       <table>
@@ -42,6 +39,12 @@
         <tbody id="poketable">
         </tbody>
       </table>
+      <div>
+        <h3>Favorites</h3>
+        <div id="favorites">
+          No favorites yet
+        </div>
+      </div>
     </div>
     <script type="module" src="src/storageLogic.js"></script>
     <script type="module" src="/src/main.js"></script>

@@ -1,9 +1,9 @@
-import {getImage, filterName} from "./lookups"
+import {getImage, filterName} from "./lookups.js"
 
 const poketable = document.getElementById('poketable')
 
 //function import from storageLogic
-import {favorites, addToFavorites, saveFavorites} from "./storageLogic"
+import {favorites, addToFavorites, saveFavorites} from "./storageLogic.js"
 
 
 export const searchPokemon = async (amount = 10, search = "") => {
