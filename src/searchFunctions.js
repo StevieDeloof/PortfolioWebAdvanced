@@ -1,6 +1,7 @@
 import {getImage, filterName} from "./lookups.js"
 
 const poketable = document.getElementById('poketable')
+const current = document.getElementById('current')
 
 //function import from storageLogic
 import {favorites, addToFavorites, saveFavorites} from "./storageLogic.js"
@@ -11,6 +12,7 @@ export const searchPokemon = async (amount = 10, search = "") => {
     poketable.innerHTML = ""
     let i = 1;
     while (amount > 0) {
+        current.innerHTML = i
         //search Pokemon based on ID
         try {
             //Get the pokemon, and turn it into an object
@@ -37,6 +39,18 @@ export const searchPokemon = async (amount = 10, search = "") => {
                 newPokemon.appendChild(data);
                 poketable.appendChild(newPokemon)
 
+                //add height
+                data = document.createElement("td")
+                data.innerHTML = pokemon.height
+                newPokemon.appendChild(data);
+                poketable.appendChild(newPokemon)
+
+                //add weight
+                data = document.createElement("td")
+                data.innerHTML = pokemon.weight
+                newPokemon.appendChild(data);
+                poketable.appendChild(newPokemon)
+
                 //Button to save a pokemon
                 data = document.createElement("td")
                 const btn = document.createElement('button')
@@ -51,7 +65,7 @@ export const searchPokemon = async (amount = 10, search = "") => {
                             return 0;
                         }
                     }
-                    addToFavorites(id, name)
+                    addToFavorites(id, name, pokemon.height, pokemon.weight)
                     saveFavorites()
                 })
 

@@ -16,7 +16,7 @@ document.addEventListener('load',searchPokemon())
 filter.addEventListener("click", async () => {
     filter.style.display = 'none';
     response.style.display = "inline"
-    await searchPokemon(parseFloat(amountEl.value), pokemonName.value)
+    await searchPokemon(parseFloat(amountEl.value), pokemonName.value.toLowerCase())
     response.style.display = "none"
     filter.style.display = 'inline';
 })

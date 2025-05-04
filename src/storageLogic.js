@@ -15,13 +15,15 @@ export const refreshFavorites = () => {
         favoritesHTML.innerHTML = ""
         let table = document.createElement('table')
         let row
-        table.innerHTML = "<thead><th>ID</th><th>Pokemon</th><th>Name</th><th>Remove</th></thead>"
+        table.innerHTML = "<thead><th>ID</th><th>Pokemon</th><th>Name</th><th>Height</th><th>Weight</th><th>Remove</th></thead>"
         for (let favorite of favorites) {
             row = document.createElement('tr');
             row.innerHTML += `<td>${favorite.ID}</td>`
             const image = getImage(favorite.ID)
             row.append(image)
             row.innerHTML += `<td>${favorite.name}</td>`
+            row.innerHTML += `<td>${favorite.height}</td>`
+            row.innerHTML += `<td>${favorite.weight}</td>`
 
             //Add button to remove from favorites
             const remove = document.createElement("button")
@@ -49,11 +51,13 @@ export const refreshFavorites = () => {
     }
 }
 
-export const addToFavorites = (id, name) => {
+export const addToFavorites = (id, name, height, weight) => {
     let pokemon = {
         ID: id,
         image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
-        name: name
+        name: name,
+        height: height,
+        weight: weight
     }
     if (favorites.length <= 10) {
         favorites.push(pokemon)
