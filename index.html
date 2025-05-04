@@ -24,15 +24,15 @@
           <option value="40">40</option>
           <option value="45">45</option>
           <option value="50">50</option>
-        </select>
+        </select> 
         <br>
-        <button id="filter">Filter</button>
+        <button type="button" id="filter">Filter</button>
         <div id="res" style="display: none;">
           Searching: Pokemon <span id="current"></span>
         </div>
       </div>
 
-      <table>
+      <table id="table1">
       	<thead>
           <th>ID</th>
           <th>Pokemon</th>
@@ -44,7 +44,9 @@
         <tbody id="poketable">
         </tbody>
       </table>
-      <div>
+      <div id="404" style="display: none;">No pokemon found</div>
+
+      <div id="extra">
         <h3>Favorites</h3>
         <div id="favorites">
           No favorites yet

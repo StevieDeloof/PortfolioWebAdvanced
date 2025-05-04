@@ -1,6 +1,6 @@
 'use strict'
 
-import { searchPokemon } from "./searchFunctions.js"
+import { table, notFound, searchPokemon } from "./searchFunctions.js"
 import { initializeStorage, refreshFavorites } from "./storageLogic.js";
 
 const filter = document.getElementById('filter');
@@ -16,7 +16,9 @@ document.addEventListener('load',searchPokemon())
 filter.addEventListener("click", async () => {
     filter.style.display = 'none';
     response.style.display = "inline"
-    await searchPokemon(parseFloat(amountEl.value), pokemonName.value.toLowerCase())
+    await searchPokemon(parseFloat(amountEl.value), pokemonName.value.toLowerCase()).catch(() => {
+        notFound.style.display = "block"
+    })
     response.style.display = "none"
     filter.style.display = 'inline';
 })

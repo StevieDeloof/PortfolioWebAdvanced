@@ -2,12 +2,16 @@ import {getImage, filterName} from "./lookups.js"
 const poketable = document.getElementById('poketable')
 const current = document.getElementById('current')
 
+export const table = document.querySelector('table')
+export const notFound = document.getElementById('404')
+
 //function import from storageLogic
 import {favorites, addToFavorites, saveFavorites} from "./storageLogic.js"
 
 
 export const searchPokemon = async (amount = 10, search = "") => {
     return new Promise(async (resolve, reject) => {
+        table.style.display = "none"
         const start_amount = amount;
         poketable.innerHTML = ""
         let i = 1;
@@ -20,6 +24,9 @@ export const searchPokemon = async (amount = 10, search = "") => {
             .then(data => data.json())
             //If the name is accepted by the filter
             if (filterName(search, pokemon.forms[0].name)) {
+                //remove any possible error display
+                table.style.display = "inline-block"
+                notFound.style.display = "none"
                 //Set vars 
                 const id = i;
                 const name = pokemon.forms[0].name
@@ -77,8 +84,10 @@ export const searchPokemon = async (amount = 10, search = "") => {
             //Raise ID of the pokemon
             i++
         } catch (err) {
-            if (amount == start_amount) poketable.innerHTML = "No pokemon found"
-            reject();
+            if (amount == start_amount) {
+                reject("not found")
+                return 0
+            }
         }
     }
     resolve()
