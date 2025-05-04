@@ -41,3 +41,20 @@ export const addToFavorites = (id, name) => {
     }
     else (alert("You already have 10 favorites! Remove one before you add another one"))
 }
+
+export const saveFavorites = (favorites) => {
+    console.log(localStorage.getItem("favorites"))    
+    //If no favorites are saved, don't save anything
+    if (favorites.length == 0) {
+        //If there were favorites, but were removed, remove Item from LocalStorage
+        if (localStorage.getItem("favorites")) {
+            localStorage.removeItem("favorites")
+        }
+        return 0;
+    }
+    try {
+        localStorage.setItem("favorites", JSON.stringify(favorites))
+    } catch (err) {
+        console.error(err)
+    }
+}

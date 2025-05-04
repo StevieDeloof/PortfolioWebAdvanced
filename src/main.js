@@ -1,12 +1,15 @@
 'use strict'
 
 import { searchPokemon } from "./searchFunctions.js"
+import { initializeStorage, refreshFavorites } from "./storageLogic.js";
 
 const filter = document.getElementById('filter');
 const amountEl = document.getElementById("amount")
 const pokemonName = document.getElementById("pokemonName")
 
-document.addEventListener('load', searchPokemon())
+initializeStorage()
+refreshFavorites()
+document.addEventListener('load',searchPokemon())
 
 //Button dissapears while function is progressing to prevent bugs
 filter.addEventListener("click", async () => {

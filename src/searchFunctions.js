@@ -3,7 +3,7 @@ import {getImage, filterName} from "./lookups"
 const poketable = document.getElementById('poketable')
 
 //function import from storageLogic
-import {favorites, favoritesHTML, initializeStorage, refreshFavorites, addToFavorites} from "./storageLogic"
+import {favorites, favoritesHTML, initializeStorage, refreshFavorites, addToFavorites, saveFavorites} from "./storageLogic"
 
 
 export const searchPokemon = async (amount = 10, search = "") => {
@@ -46,6 +46,7 @@ export const searchPokemon = async (amount = 10, search = "") => {
                         }
                     }
                     addToFavorites(id, name)
+                    saveFavorites(favorites)
                 })
                 data.append(btn)
                 newPokemon.appendChild(data)
