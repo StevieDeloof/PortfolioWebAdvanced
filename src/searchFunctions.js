@@ -1,5 +1,4 @@
 import {getImage, filterName} from "./lookups.js"
-
 const poketable = document.getElementById('poketable')
 const current = document.getElementById('current')
 
@@ -8,10 +7,11 @@ import {favorites, addToFavorites, saveFavorites} from "./storageLogic.js"
 
 
 export const searchPokemon = async (amount = 10, search = "") => {
-    const start_amount = amount;
-    poketable.innerHTML = ""
-    let i = 1;
-    while (amount > 0) {
+    return new Promise(async (resolve, reject) => {
+        const start_amount = amount;
+        poketable.innerHTML = ""
+        let i = 1;
+        while (amount > 0) {
         current.innerHTML = i
         //search Pokemon based on ID
         try {
@@ -77,9 +77,10 @@ export const searchPokemon = async (amount = 10, search = "") => {
             //Raise ID of the pokemon
             i++
         } catch (err) {
-            amount = 0;
-            //Checks if any pokemon were found at all. If no pokemon were found period, this message is sendt
             if (amount == start_amount) poketable.innerHTML = "No pokemon found"
+            reject();
         }
     }
+    resolve()
+})
 }
