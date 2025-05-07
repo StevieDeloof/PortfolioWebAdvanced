@@ -44,6 +44,14 @@ input, select {
     background-color: rgb(167, 238, 167);
 }
 
+.remove {
+    background-color: rgb(252, 122, 122);
+}
+
+#extra {
+    text-align: center;
+}
+
 @media screen and (min-width: 800px) {
     #extra {
         margin-left: 100px;
@@ -65,15 +73,25 @@ input, select {
         margin-left: 15%;
         margin-right: 15%;
     }
-
-    .remove {
-        background-color: rgb(252, 122, 122);
-    }
 }
 
 @media screen and (max-width: 800px) {
+
+    #input {
+        align-self: center;
+        width: 75%;
+        margin-bottom: 50px;
+    }
+
+    #filter, #res {
+        align-self: center;
+    }
+
     table {
         margin-bottom: 50px;
+        font-size:small;
+        width:fit-content;
+        align-self: center;
     }
     img {
         width: 60px;
@@ -85,9 +103,6 @@ input, select {
     button {
         width: 75px;
         height: 50px;
-    }
-    #favorites {
-        min-width: none;
     }
     #container-main {
         flex-direction: column;
