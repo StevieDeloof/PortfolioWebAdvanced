@@ -2,6 +2,7 @@ import {getImage, filterName} from "./lookups.js"
 const poketable = document.getElementById('poketable')
 const current = document.getElementById('current')
 const sortType = document.getElementById('sort');
+const desc = document.getElementById('desc')
 
 export const table = document.querySelector('table')
 export const notFound = document.getElementById('404')
@@ -63,7 +64,8 @@ const addPokemon = (pokemon) => {
     newPokemon.appendChild(data)
 }  
 
-const sortPokemon = (pokeList, desc = false) => {
+const sortPokemon = (pokeList, desc) => {
+    desc = (desc == "on") ? true : false;
     switch (sortType.value) {
         case 'name':
             pokeList.sort((a, b) => {
@@ -85,6 +87,11 @@ const sortPokemon = (pokeList, desc = false) => {
             })
             break;
         default:
+            pokeList.sort((a, b) => {
+                if (desc) return b.ID - a.ID;
+                console.log(a.ID)
+                return a.ID - b.ID;
+            })
     }
     return pokeList;
 }
@@ -123,7 +130,7 @@ export const searchPokemon = async (amount = 10, search = "") => {
                 }
             }
         }
-        pokeList = sortPokemon(pokeList, document.getElementById('desc').value)
+        pokeList = sortPokemon(pokeList, desc.value)
         pokeList.forEach(pokemon => addPokemon(pokemon))
     resolve()
 })

@@ -1,6 +1,6 @@
 'use strict'
 
-import { table, notFound, searchPokemon } from "./searchFunctions.js"
+import { notFound, searchPokemon } from "./searchFunctions.js"
 import { initializeStorage, refreshFavorites } from "./storageLogic.js";
 
 const filter = document.getElementById('filter');

@@ -52,7 +52,7 @@ export const refreshFavorites = () => {
 }
 
 export const addToFavorites = (id, name, height, weight) => {
-    let pokemon = {
+    const pokemon = {
         ID: id,
         image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`,
         name: name,
