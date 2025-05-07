@@ -53,7 +53,9 @@ I added the following required technical aspects:
     searchFunctions.js:
       Lines 71-94 sort the array of pokemon depending on the variables the user gave. For the name I used the localeComparefunction.
       Line 134 I used the forEach function to go over every pokemon and add them to the table.
-  e.
+  e. I made use of arrow functions too write clean javascript code
+    searchFunctions.js
+      Line 113, 134 uses an arrow function to write the code on 1 line
 
   f. I used the Conditional operator to check the value of a variable.
     searchFunctions.js:
@@ -83,8 +85,9 @@ I added the following required technical aspects:
       Line 79 does the opposite, and takes an object, and turns it into a JSON string. This string is then saved to LocalStorage.
 
 4. Storage and validation
-  a.
-
+  a. I validated the form, specifically if the pokemon is not found in the database
+    searchFunctions.js
+      On line 126-130 the site will tell the user that no pokemon were found if all the pokemon were looked through but none were found. 
   b. I made use of LocalStorage to save user favorites.
     storageLogic.js
       Line 69-83 turn the array of favorites into a string, and save into the localStorage
