@@ -17,7 +17,7 @@ table, td {
 button {
     border-color: black;
     background-color: rgb(77, 187, 224);
-    border-radius: 25%;
+    border-radius: 50%;
 }
 
 #input {
