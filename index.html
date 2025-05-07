@@ -24,7 +24,18 @@
           <option value="40">40</option>
           <option value="45">45</option>
           <option value="50">50</option>
-        </select> 
+        </select> <br>
+        <label for="sort">Sort by:</label>
+        <select name="sort" id="sort">
+            <option value="id">ID</option>
+            <option value="name">Name</option>
+            <option value="height">Height</option>
+            <option value="weight">Weight</option>
+        </select><br>
+        <div style="align-self: center;">
+          <label for="desc">Descend:</label>
+          <input type="checkbox" id="desc" style="width: min-content;">
+        </div>
         <br>
         <button type="button" id="filter">Filter</button>
         <div id="res" style="display: none;">

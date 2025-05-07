@@ -38,6 +38,10 @@ label {
     text-align: center;
 }
 
+#res {
+    align-self: center;
+}
+
 input, select {
     width:75%;
     align-self: center;
@@ -83,7 +87,7 @@ input, select {
         margin-bottom: 50px;
     }
 
-    #filter, #res {
+    #filter {
         align-self: center;
     }
 
