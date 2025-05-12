@@ -108,7 +108,9 @@ I added the following required technical aspects:
   I made this project using Vite. I made the folder structure coherent and logical, and differentiated the style and javascript files from the HTML
 
 This site can be buildt using this npm command (works on both Windows and Linux): 
+the install and build can also be used via install.bat or install.sh on windows and Linux respectively (Mac uses the .sh file). Run preview needs to be used in the terminal itself
 
+npm install
 npm run build
 npm run preview
 
